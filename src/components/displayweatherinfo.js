@@ -1,3 +1,9 @@
+/**
+ * This component renders results of the Search task
+ * DisplayWeather function receives props as city and weather data Object from App component.
+ * Different parameters are extracted from weather data and UI is updated.
+ */
+
 import styled from "styled-components";
 import logos from "../logos-images/image_index";
 import humidity from "../logos-images/humidity.svg";

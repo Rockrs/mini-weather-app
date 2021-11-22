@@ -1,3 +1,12 @@
+/**  
+ * This component renders home page component ie. weather modal
+ * After getting input value as city name from input tag we change state of city useState variable
+ * After Clicking on Search Here Button we execute event handler that is passed as one of props key from App component.
+ * Event handlers does following actions:
+    * makes fetch API call to get data from weather API based on city name.
+    * changes the state of renderState and data useState variable which causes  function App to re-render(re-invoke), which in turn causes diplayweather component to render based on conditional rendering.
+*/
+
 import styled from "styled-components";
 import weatherlogo from "./../logos-images/weather_logo.svg";
 

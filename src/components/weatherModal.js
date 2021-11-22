@@ -14,7 +14,7 @@ const ModalStyle = styled.div`
   position: relative;
   height: 470px;
   width: 400px;
-  border: 2px solid #ebe1e1;
+  border: 2px solid #bae3a43b;
   display: flex;
   justify-content: center;
   margin: 150px auto;
@@ -36,7 +36,7 @@ const ModalStyle = styled.div`
   }
 
   .search-div {
-    margin: 2rem 1.5rem;
+    margin: 3rem 1.5rem;
     // border :2px solid red;
   }
 
@@ -70,13 +70,13 @@ const ModalStyle = styled.div`
     position: absolute;
     top: 170px;
     // border : 2px solid red;
-    margin: 1rem 2rem;
+    margin: 1rem auto;
   }
 
   img {
     width: 250px;
     height: 200px;
-    margin: 0 2rem;
+    margin: 0 4rem;
   }
 `;
 

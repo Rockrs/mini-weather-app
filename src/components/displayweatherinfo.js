@@ -30,7 +30,7 @@ const Outerdiv = styled.div`
     justify-content: space-between;
     // border: 2px solid red;
     margin: 1rem 3rem;
-    width: 250px;
+    width: 300px;
   }
 
   .temperature {
@@ -52,11 +52,13 @@ const Outerdiv = styled.div`
     justify-content: space-between;
     // border : 2px solid red;
     margin: 2rem 1rem;
+    padding: 1rem 1rem;
   }
 
   .parameters {
-    font-size: 1.1rem;
-    letter-spacing: 0.6px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color:#d5a316;
   }
 `;
 
@@ -92,18 +94,18 @@ function DisplayWeather(props) {
         </div>
         <div className="weather-parameters">
           <div className="humidity" className="parameters">
-            <p>Humidity</p>
-            <p>{data.main.humidity}</p>
+            <p style = {{transform : 'scale(1.2)'}}>Humidity</p>
+            <p style = {{fontWeight : '600', letterSpacing : '1px'}}>{data.main.humidity}</p>
             <img src={humidity} alt="#"></img>
           </div>
           <div className="pressure" className="parameters">
-            <p> Pressure</p>
-            <p> {data.main.pressure}</p>
+            <p style = {{transform : 'scale(1.2)'}}> Pressure</p>
+            <p style = {{fontWeight : '600', letterSpacing : '1px'}}>{data.main.pressure}</p>
             <img src={pressure} alt="#"></img>
           </div>
           <div className="visibility" className="parameters">
-            <p> Visibilty</p>
-            <p> {data.visibility}</p>
+            <p style = {{transform : 'scale(1.2)'}}> Visibilty</p>
+            <p style = {{fontWeight : '600', letterSpacing : '1px'}}>{data.visibility}</p>
           </div>
         </div>  
       </div>

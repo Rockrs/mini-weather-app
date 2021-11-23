@@ -12,24 +12,22 @@ import weatherlogo from "./../logos-images/weather_logo.svg";
 
 const ModalStyle = styled.div`
   position: relative;
-  height: 470px;
+  height: 500px;
   width: 400px;
-  border: 2px solid #bae3a43b;
   display: flex;
   justify-content: center;
-  margin: 150px auto;
-  background-color: #ff7777bf;
+  margin: 100px auto;
+  background:d8d2d294;
   border-radius: 10px;
-  // box-shadow : 2px 3px;
+  // border: 2px solid red;
 
   .modal-div {
-    // border :2px solid blue;
     margin-top: 1rem;
     text-align: center;
   }
 
-  p {
-    font-size: 1.4rem;
+  h1{
+    font-size: 2.3rem;
     font-weight: 600;
     letter-spacing: 1px;
     color: #fff;
@@ -37,14 +35,17 @@ const ModalStyle = styled.div`
 
   .search-div {
     margin: 3rem 1.5rem;
-    // border :2px solid red;
+    display:flex;
+    flex-direction:column;
+    // border: 2px solid red;
+    align-items:center;
   }
 
   #input {
-    font-size: 1rem;
+    font-size: 1.4rem;
     padding: 0.4rem 0.4rem;
-    margin-right: 1rem;
-    border: none;
+    margin: 2rem auto;
+    border : none;
   }
 
   #input:hover,
@@ -59,6 +60,8 @@ const ModalStyle = styled.div`
     letter-spacing: 0.7px;
     border-radius: 10px;
     border: none;
+    padding: 1rem 1rem;
+    width: 150px;
   }
 
   #btn:hover {
@@ -68,15 +71,9 @@ const ModalStyle = styled.div`
 
   .image {
     position: absolute;
-    top: 170px;
-    // border : 2px solid red;
-    margin: 1rem auto;
-  }
-
-  img {
-    width: 250px;
-    height: 200px;
-    margin: 0 4rem;
+    top: 290px;
+    margin-left :8rem;
+    // border: 2px solid blue; 
   }
 `;
 
@@ -87,9 +84,9 @@ function WeatherModal(props) {
     <ModalStyle>
       <div>
         <div className="modal-div">
-          <p>React Weather App</p>
+          <h1>React Weather App</h1>
           <div className="image">
-            <img src={weatherlogo} alt="#"></img>
+            <img src={weatherlogo} alt="#" style = {{width : '200px'}}></img>
           </div>
           <div className="search-div">
             <input

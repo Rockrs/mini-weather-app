@@ -7,30 +7,43 @@
 import styled from "styled-components";
 import logos from "../logos-images/image_index";
 import humidity from "../logos-images/humidity.svg";
-import pressure from "../logos-images/pressure.svg";
+import pressure from "../logos-images/pressure.png";
 
 const Outerdiv = styled.div`
-  background: linear-gradient(papayawhip, white);
-  height: 55vh;
-  width: 400px;
-  margin: 150px auto;
-  border-radius: 50px;
-  text-align: center;
-  border : 2px solid green;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
+  .main-div {
+    background: linear-gradient(papayawhip, #d8d2d294);
+    height: 70vh;
+    width: 40vw;
+    max-width: 500px;
+    margin: 100px auto;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 50px;
+    font-family : "Poppins", sans-serrif;
+  }
+
+  .height {
+    background-color: #d3c1a542;
+  }
   h1 {
-    margin: 2.5rem auto;
     letter-spacing: 1px;
     font-weight: 600;
-    text-transform : uppercase;
-    // border: 2px solid red;
+    text-transform: uppercase;
+    color: #ff6230de;
+    margin: 1rem auto;
   }
+
   .weather-info {
     display: flex;
-    justify-content: space-between;
+    margin: 5rem auto;
     // border: 2px solid red;
-    margin: 1rem 3rem;
-    width: 300px;
+  }
+
+  #logo {
+    width: 100px;
+    margin-right: 7rem;
   }
 
   .temperature {
@@ -50,15 +63,24 @@ const Outerdiv = styled.div`
   .weather-parameters {
     display: flex;
     justify-content: space-between;
-    // border : 2px solid red;
     margin: 2rem 1rem;
     padding: 1rem 1rem;
   }
 
-  .parameters {
+  .parameter {
     font-size: 1rem;
     letter-spacing: 2px;
-    color:#d5a316;
+    color:#a25c14 ;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .main-div {
+      width: 80vw;
+    }
+
+    .weather-info {
+      width: 400px;
+    }
   }
 `;
 
@@ -86,28 +108,38 @@ function DisplayWeather(props) {
   return (
     <Outerdiv>
       <div>
-        <h1>{city}</h1>
-        <div className="weather-info">
-          <p className="temperature">{Math.floor(data.main.temp) - 273}|C</p>
-          <p className="weather-desc">{weatherDescription}</p>
-          <img src={logo} alt="#"></img>
+        <div className="main-div">
+          <div className="height">
+            <h1>{city}</h1>
+          </div>
+          {data.weather[0].description}
+          <div className="weather-info">
+            <p className="temperature">{Math.floor(data.main.temp) - 273}|C</p>
+            <img src={logo} alt="#" id="logo"></img>
+          </div>
+          <div className="weather-parameters">
+            <div className="parameter">
+              <p style={{ transform: "scale(1.2)" }}>Humidity</p>
+              <p style={{ fontWeight: "600", letterSpacing: "1px" }}>
+                {data.main.humidity}
+              </p>
+              <img src={humidity} alt="#"></img>
+            </div>
+            <div className="parameter">
+              <p style={{ transform: "scale(1.2)" }}> Pressure</p>
+              <p style={{ fontWeight: "600", letterSpacing: "1px" }}>
+                {data.main.pressure}
+              </p>
+              <img src={pressure} alt="#"></img>
+            </div>
+            <div className="parameter">
+              <p style={{ transform: "scale(1.2)" }}> Visibilty</p>
+              <p style={{ fontWeight: "600", letterSpacing: "1px" }}>
+                {data.visibility}
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="weather-parameters">
-          <div className="humidity" className="parameters">
-            <p style = {{transform : 'scale(1.2)'}}>Humidity</p>
-            <p style = {{fontWeight : '600', letterSpacing : '1px'}}>{data.main.humidity}</p>
-            <img src={humidity} alt="#"></img>
-          </div>
-          <div className="pressure" className="parameters">
-            <p style = {{transform : 'scale(1.2)'}}> Pressure</p>
-            <p style = {{fontWeight : '600', letterSpacing : '1px'}}>{data.main.pressure}</p>
-            <img src={pressure} alt="#"></img>
-          </div>
-          <div className="visibility" className="parameters">
-            <p style = {{transform : 'scale(1.2)'}}> Visibilty</p>
-            <p style = {{fontWeight : '600', letterSpacing : '1px'}}>{data.visibility}</p>
-          </div>
-        </div>  
       </div>
     </Outerdiv>
   );

@@ -6,80 +6,95 @@
 
 import styled from "styled-components";
 import logos from "../logos-images/image_index";
-import humidity from "../logos-images/humidity.svg";
-import pressure from "../logos-images/pressure.png";
+import bg from "./../images/bg_image.jpg";
 
 const Outerdiv = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-  .main-div {
-    background: linear-gradient(papayawhip, #d8d2d294);
-    height: 70vh;
-    width: 40vw;
-    max-width: 500px;
-    margin: 100px auto;
-    border-radius: 20px;
-    text-align: center;
-    padding-top: 50px;
-    font-family : "Poppins", sans-serrif;
-  }
+  height: 100vh;
+  background-image: url(${bg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Poppins", sans-serrif;
 
-  .height {
-    background-color: #d3c1a542;
-  }
   h1 {
-    letter-spacing: 1px;
-    font-weight: 600;
+    margin: 1.2rem auto;
     text-transform: uppercase;
-    color: #ff6230de;
-    margin: 1rem auto;
+    letter-spacing: 3px;
   }
 
-  .weather-info {
+  .main-div {
     display: flex;
-    margin: 5rem auto;
-    // border: 2px solid red;
+  }
+
+  .main-div div {
+    text-align: center;
+    margin: 10px auto;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    padding: 0.2rem 1rem;
+  }
+
+  .temperature-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   #logo {
-    width: 100px;
-    margin-right: 7rem;
+    height: 80px;
   }
 
-  .temperature {
-    font-size: 1.2rem;
+  #temperature {
     font-weight: 600;
-    letter-spacing: 1px;
-    padding: 1rem 0;
-    margin: auto;
   }
 
-  .weather-desc {
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin: auto;
-  }
-
-  .weather-parameters {
+  .weather-parameter {
     display: flex;
-    justify-content: space-between;
-    margin: 2rem 1rem;
-    padding: 1rem 1rem;
+    flex-direction: column;
   }
 
-  .parameter {
-    font-size: 1rem;
-    letter-spacing: 2px;
-    color:#a25c14 ;
+  #humidity,
+  #pressure,
+  #visibility {
+    background-color: #f1dbd054;
+    border-radius: 5px;
+    color: #4e0000;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 750px) {
     .main-div {
-      width: 80vw;
+      flex-direction: column;
+      width: 60vw;
+      margin-top: 3rem;
     }
 
-    .weather-info {
-      width: 400px;
+    img {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 751px) {
+    .main-div {
+      margin: 3rem auto;
+    }
+
+    #city {
+      font-size: 1.2rem;
+    }
+
+    h1 {
+      margin-top: 4rem;
+    }
+
+    #humidity_val,
+    #pressure_val {
+      margin-bottom: 1.7rem;
+    }
+
+    #logo,
+    #temperature {
+      margin-right: 3rem;
     }
   }
 `;
@@ -106,39 +121,27 @@ function DisplayWeather(props) {
   }
 
   return (
-    <Outerdiv>
-      <div>
-        <div className="main-div">
-          <div className="height">
-            <h1>{city}</h1>
-          </div>
-          {data.weather[0].description}
-          <div className="weather-info">
-            <p className="temperature">{Math.floor(data.main.temp) - 273}|C</p>
-            <img src={logo} alt="#" id="logo"></img>
-          </div>
-          <div className="weather-parameters">
-            <div className="parameter">
-              <p style={{ transform: "scale(1.2)" }}>Humidity</p>
-              <p style={{ fontWeight: "600", letterSpacing: "1px" }}>
-                {data.main.humidity}
-              </p>
-              <img src={humidity} alt="#"></img>
-            </div>
-            <div className="parameter">
-              <p style={{ transform: "scale(1.2)" }}> Pressure</p>
-              <p style={{ fontWeight: "600", letterSpacing: "1px" }}>
-                {data.main.pressure}
-              </p>
-              <img src={pressure} alt="#"></img>
-            </div>
-            <div className="parameter">
-              <p style={{ transform: "scale(1.2)" }}> Visibilty</p>
-              <p style={{ fontWeight: "600", letterSpacing: "1px" }}>
-                {data.visibility}
-              </p>
-            </div>
-          </div>
+    <Outerdiv
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <h1>{city}</h1>
+      <div id="city">{data.weather[0].description}</div>
+      <div className="main-div">
+        <div className="temperature-icon">
+          <div id="temperature">{Math.floor(data.main.temp) - 273}|C</div>
+          <img src={logo} alt="#" id="logo"></img>
+        </div>
+        <div className="weather-parameter">
+          <div id="humidity">Humidity</div>
+          <div id="humidity_val">{data.main.humidity}</div>
+          <div id="pressure">Pressure</div>
+          <div id="pressure_val">{data.main.pressure}</div>
+          <div id="visibility">Visibilty</div>
+          <div id="visibility_val">{data.visibility}</div>
         </div>
       </div>
     </Outerdiv>
